@@ -23,3 +23,30 @@ One solution to extract information from PDF files is to use OpenAI's natural la
 One way to achieve this is to use the PDFLayoutTextStripper library, which uses PDFBox to read through all text items in the PDF file and organize them in lines, keeping the relative positions the same as in the original PDF file. This is important because, for example, in an invoice's items table, if the amount is in the same column as the quantity, it will result in incorrect values when querying for the total amount and total quantity.
 
 Once the PDF has been converted to text, the next step is to call the OpenAI API and pass the text along with queries such as "Extract fields: 'PO Number', 'Total Quantity'". The response will be in JSON format, and GSON can be used to parse it and extract the final results. This two-step process of converting the PDF to text and then using OpenAI's natural language processing capabilities can be an effective solution for extracting information from PDF files.
+
+The query is as simple as follows with %s is replaced by PO text content:
+```java
+private static final String QUESTION = """
+    Want to extract fields: "PO Number", "Total Amount", "Total Quantity" and "Delivery Address".
+    Return result in JSON format without any explanation. 
+    The PO content is as follows:
+    %s
+    """;
+```
+
+Sample results from OpenAI:
+```js
+{
+  "object": "text_completion",
+  "model": "text-davinci-003",
+  "choices": [
+    {
+      "text": "\\n{\\n  \\"PO Number\\": \\"PO-003847945\\",\\n  \\"Total Amount\\": \\"1,485.00\\",\\n  \\"Total Quantity\\": \\"100.00\\",\\n  \\"Delivery Address\\": \\"Peera Consumer Good Co.(QSC), P.O.Box 3371, Dohe, QAT\\"\\n}",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  // ... some more fields
+}
+```

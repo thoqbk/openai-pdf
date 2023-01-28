@@ -88,7 +88,6 @@ Sample results from OpenAI:
 ```
 
 ## Run sample code
-
 Prerequisites:
 - Java 16+
 - Maven

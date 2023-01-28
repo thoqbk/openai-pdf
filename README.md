@@ -16,7 +16,7 @@ Existing solutions for extracting information from PDFs include:
 
 - AI-based cloud services: utilize machine learning to extract structured data from PDFs. Examples include [pdftables](https://pdftables.com/) and [docparser](https://docparser.com/), but these are not open-source friendly.
 
-## Yet, another PDF data extracting solution: using OpenAI API
+## Yet, another solution for PDF data extracting: using OpenAI
 
 One solution to extract information from PDF files is to use OpenAI's natural language processing capabilities to understand the content of the document. However, OpenAI is not able to work with PDF or image formats directly, so the first step is to convert the PDF to text while retaining the relative positions of the text items.
 

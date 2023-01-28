@@ -23,7 +23,7 @@ import java.util.Map;
 public class Main {
     private static final String OPENAI_API_KEY = "";
     private static final String OPENAI_API_URL = "https://api.openai.com/v1/completions";
-    private static final String QUESTION = """
+    private static final String QUERY = """
             Want to extract fields: "PO Number", "Total Amount", "Total Quantity" and "Delivery Address".
             Return result in JSON format without any explanation. 
             The PO content is as follows:
@@ -58,7 +58,7 @@ public class Main {
 
         Map<String, Object> json = new HashMap<>();
         json.put("model", "text-davinci-003");
-        json.put("prompt", String.format(QUESTION, pdf));
+        json.put("prompt", String.format(QUERY, pdf));
         json.put("temperature", 0.5);
         json.put("max_tokens", 2048);
 

@@ -26,7 +26,7 @@ Once the PDF has been converted to text, the next step is to call the OpenAI API
 
 The query is as simple as follows with %s is replaced by PO text content:
 ```java
-private static final String QUESTION = """
+private static final String QUERY = """
     Want to extract fields: "PO Number", "Total Amount", "Total Quantity" and "Delivery Address".
     Return result in JSON format without any explanation. 
     The PO content is as follows:

@@ -20,7 +20,44 @@ Existing solutions for extracting information from PDFs include:
 
 One solution to extract information from PDF files is to use OpenAI's natural language processing capabilities to understand the content of the document. However, OpenAI is not able to work with PDF or image formats directly, so the first step is to convert the PDF to text while retaining the relative positions of the text items.
 
-One way to achieve this is to use the PDFLayoutTextStripper library, which uses PDFBox to read through all text items in the PDF file and organize them in lines, keeping the relative positions the same as in the original PDF file. This is important because, for example, in an invoice's items table, if the amount is in the same column as the quantity, it will result in incorrect values when querying for the total amount and total quantity.
+One way to achieve this is to use the PDFLayoutTextStripper library, which uses PDFBox to read through all text items in the PDF file and organize them in lines, keeping the relative positions the same as in the original PDF file. This is important because, for example, in an invoice's items table, if the amount is in the same column as the quantity, it will result in incorrect values when querying for the total amount and total quantity. Here is an example of the output from stripper:
+```
+                       
+                                                                                                *PO-003847945*                                           
+                                                                                                                                                         
+                                                                                      Page.........................: 1    of    1                        
+                                                                                                                                                         
+                                                                                                                                                         
+                                                                                                                                                         
+                                                                                                                                                         
+                                                                                                                                                         
+                Address...........:     Aeeee  Consumer  Good  Co.(QSC)            Purchase       Order                                                  
+                                        P.O.Box 1234                                                                                                     
+                                        Dooo,                                      PO-003847945                                                          
+                                        ABC                                       TL-00074                                   
+                                                                                                                                                         
+                Telephone........:                                                 USR\S.Morato         5/10/2020 3:40 PM                                
+                Fax...................:                                                                                                                  
+                                                                                                                                                         
+                                                                                                                                                         
+               100225                Aaaaaa  Eeeeee                                 Date...................................: 5/10/2020                   
+                                                                                    Expected  DeliveryDate...:  5/10/2020                                
+               Phone........:                                                       Attention Information                                                
+               Fax.............:                                                                                                                         
+               Vendor :    TL-00074                                                                                                                      
+               AAAA BBBB CCCCCAAI    W.L.L.                                         Payment  Terms     Current month  plus  60  days                     
+                                                                                                                                                         
+                                                                                                                                                         
+                                                                                                                         Discount                        
+          Barcode           Item number     Description                  Quantity   Unit     Unit price       Amount                  Discount           
+          5449000165336     304100          CRET ZERO 350ML  PET             5.00 PACK24          54.00        270.00         0.00         0.00          
+                                                     350                                                                                                 
+          5449000105394     300742          CEEOCE  EOE SOFT DRINKS                                                                                      
+                                            1.25LTR                          5.00  PACK6          27.00        135.00         0.00         0.00          
+                                                                                                                                                         
+                                                1.25                                                                                                                        
+(truncated...)
+```
 
 Once the PDF has been converted to text, the next step is to call the OpenAI API and pass the text along with queries such as "Extract fields: 'PO Number', 'Total Quantity'". The response will be in JSON format, and GSON can be used to parse it and extract the final results. This two-step process of converting the PDF to text and then using OpenAI's natural language processing capabilities can be an effective solution for extracting information from PDF files.
 

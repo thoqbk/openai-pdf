@@ -12,14 +12,14 @@ Additionally, PDFs can contain both text and images, making it difficult for dev
 ## Existing solutions
 Existing solutions for extracting information from PDFs include:
 
-- Using regex: to match patterns in text after converting the PDF to plain text. Examples include invoice2data and traprange-invoice. However, this method requires knowledge of the format of the data fields.
+- Using regex: to match patterns in text after converting the PDF to plain text. Examples include [invoice2data](https://github.com/invoice-x/invoice2data) and [traprange-invoice](https://github.com/thoqbk/traprange/blob/master/_Docs/invoice/README.md). However, this method requires knowledge of the format of the data fields.
 
 - AI-based cloud services: utilize machine learning to extract structured data from PDFs. Examples include [pdftables](https://pdftables.com/) and [docparser](https://docparser.com/), but these are not open-source friendly.
 
 ## Yet, another solution for PDF data extraction: using OpenAI
 One solution to extract information from PDF files is to use OpenAI's natural language processing capabilities to understand the content of the document. However, OpenAI is not able to work with PDF or image formats directly, so the first step is to convert the PDF to text while retaining the relative positions of the text items.
 
-One way to achieve this is to use the PDFLayoutTextStripper library, which uses PDFBox to read through all text items in the PDF file and organize them in lines, keeping the relative positions the same as in the original PDF file. This is important because, for example, in an invoice's items table, if the amount is in the same column as the quantity, it will result in incorrect values when querying for the total amount and total quantity. Here is an example of the output from stripper:
+One way to achieve this is to use the PDFLayoutTextStripper library, which uses PDFBox to read through all text items in the PDF file and organize them in lines, keeping the relative positions the same as in the original PDF file. This is important because, for example, in an invoice's items table, if the amount is in the same column as the quantity, it will result in incorrect values when querying for the total amount and total quantity. Here is an example of the output from the stripper:
 ```
                        
                                                                                                 *PO-003847945*                                           
@@ -60,7 +60,7 @@ One way to achieve this is to use the PDFLayoutTextStripper library, which uses 
 
 Once the PDF has been converted to text, the next step is to call the OpenAI API and pass the text along with queries such as "Extract fields: 'PO Number', 'Total Quantity'". The response will be in JSON format, and GSON can be used to parse it and extract the final results. This two-step process of converting the PDF to text and then using OpenAI's natural language processing capabilities can be an effective solution for extracting information from PDF files.
 
-The query is as simple as follows with %s is replaced by PO text content:
+The query is as simple as follows with %s replaced by PO text content:
 ```java
 private static final String QUERY = """
     Want to extract fields: "PO Number", "Total Amount", "Total Quantity" and "Delivery Address".
@@ -97,4 +97,4 @@ Steps:
 - Log in and generate an API key
 - Replace `OPENAI_API_KEY` in Main.java with your key
 - Update `SAMPLE_PDF_FILE` if needed
-- Execute the code and view the results from output
+- Execute the code and view the results from the output

@@ -22,6 +22,7 @@ import java.util.Map;
 
 public class Main {
     private static final String OPENAI_API_KEY = "";
+    private static final String SAMPLE_PDF_FILE = "io/thoqbk/openaipdf/sample-invoice.pdf";
     private static final String OPENAI_API_URL = "https://api.openai.com/v1/completions";
     private static final String QUERY = """
             Want to extract fields: "PO Number", "Total Amount", "Total Quantity" and "Delivery Address".
@@ -39,7 +40,7 @@ public class Main {
 
     private static String extractPDFContent() throws IOException {
         ClassLoader classLoader = Main.class.getClassLoader();
-        File file = new File(classLoader.getResource("io/thoqbk/openaipdf/sample-invoice.pdf").getFile());
+        File file = new File(classLoader.getResource(SAMPLE_PDF_FILE).getFile());
         PDFParser pdfParser = new PDFParser(new RandomAccessFile(file, "r"));
         pdfParser.parse();
         PDDocument pdDocument = new PDDocument(pdfParser.getDocument());

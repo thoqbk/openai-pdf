@@ -58,7 +58,7 @@ One way to achieve this is to use the PDFLayoutTextStripper library, which uses 
 (truncated...)
 ```
 
-Once the PDF has been converted to text, the next step is to call the OpenAI API and pass the text along with queries such as "Extract fields: 'PO Number', 'Total Quantity'". The response will be in JSON format, and GSON can be used to parse it and extract the final results. This two-step process of converting the PDF to text and then using OpenAI's natural language processing capabilities can be an effective solution for extracting information from PDF files.
+Once the PDF has been converted to text, the next step is to call the OpenAI API and pass the text along with queries such as "Extract fields: 'PO Number', 'Total Amount'". The response will be in JSON format, and GSON can be used to parse it and extract the final results. This two-step process of converting the PDF to text and then using OpenAI's natural language processing capabilities can be an effective solution for extracting information from PDF files.
 
 The query is as simple as follows with %s replaced by PO text content:
 ```java

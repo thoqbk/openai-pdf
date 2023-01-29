@@ -1,6 +1,6 @@
-# Utilize OpenAI API to extract information from PDF
+# Utilize OpenAI API to extract information from PDF files
 
-## Why it's hard to extract information from PDF?
+## Why it's hard to extract information from PDF files?
 PDF, or Portable Document Format, is a popular file format that is widely used for documents such as invoices, purchase orders, and other business documents. However, extracting information from PDFs can be a challenging task for developers.
 
 One reason why it is difficult to extract information from PDFs is that the format is not structured. Unlike HTML, which has a specific format for tables and headers that developers can easily identify, PDFs do not have a consistent layout for information. This makes it harder for developers to know where to find the specific information they need.

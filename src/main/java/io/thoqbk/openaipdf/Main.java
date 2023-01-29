@@ -25,8 +25,8 @@ public class Main {
     private static final String SAMPLE_PDF_FILE = "io/thoqbk/openaipdf/sample-invoice.pdf";
     private static final String OPENAI_API_URL = "https://api.openai.com/v1/completions";
     private static final String QUERY = """
-            Want to extract fields: "PO Number", "Total Amount", "Total Quantity" and "Delivery Address".
-            Return result in JSON format without any explanation. 
+            Want to extract fields: "PO Number", "Total Amount" and "Delivery Address".
+            Return result in JSON format without any explanation.
             The PO content is as follows:
             %s
             """;

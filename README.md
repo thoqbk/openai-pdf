@@ -63,27 +63,40 @@ Once the PDF has been converted to text, the next step is to call the OpenAI API
 The query is as simple as follows with %s replaced by PO text content:
 ```java
 private static final String QUERY = """
-    Want to extract fields: "PO Number", "Total Amount", "Total Quantity" and "Delivery Address".
+    Want to extract fields: "PO Number", "Total Amount" and "Delivery Address".
     Return result in JSON format without any explanation. 
     The PO content is as follows:
     %s
     """;
 ```
 
-Sample results from OpenAI:
+The query consists of two components:
+- specifying the desired fields
+- formatting the field values as JSON data for easy retrieval from API response.
+
+And here is the example response from OpenAI:
 ```js
 {
   "object": "text_completion",
   "model": "text-davinci-003",
   "choices": [
     {
-      "text": "\\n{\\n  \\"PO Number\\": \\"PO-003847945\\",\\n  \\"Total Amount\\": \\"1,485.00\\",\\n  \\"Total Quantity\\": \\"100.00\\",\\n  \\"Delivery Address\\": \\"Peera Consumer Good Co.(QSC), P.O.Box 3371, Dohe, QAT\\"\\n}",
+      "text": "\\n{\\n  \\"PO Number\\": \\"PO-003847945\\",\\n  \\"Total Amount\\": \\"1,485.00\\",\\n  \\"Delivery Address\\": \\"Peera Consumer Good Co.(QSC), P.O.Box 3371, Dohe, QAT\\"\\n}",
       "index": 0,
       "logprobs": null,
       "finish_reason": "stop"
     }
   ],
   // ... some more fields
+}
+```
+
+Decoding the `text` field's JSON string yields the following desired fields:
+```js
+{
+  "PO Number": "PO-003847945",
+  "Total Amount": "1,485.00",
+  "Delivery Address": "Peera Consumer Good Co.(QSC), P.O.Box 3371, Dohe, QAT"
 }
 ```
 

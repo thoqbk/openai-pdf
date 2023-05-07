@@ -1,4 +1,4 @@
-# Utilize OpenAI API to extract information from PDF files
+# Utilize OpenAI ChatGPT API to extract information from PDF files
 
 ## Why it's hard to extract information from PDF files?
 PDF, or Portable Document Format, is a popular file format that is widely used for documents such as invoices, purchase orders, and other business documents. However, extracting information from PDFs can be a challenging task for developers.

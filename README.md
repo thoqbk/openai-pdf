@@ -16,7 +16,7 @@ Existing solutions for extracting information from PDFs include:
 
 - AI-based cloud services: utilize machine learning to extract structured data from PDFs. Examples include [pdftables](https://pdftables.com/) and [docparser](https://docparser.com/), but these are not open-source friendly.
 
-## Yet, another solution for PDF data extraction: using OpenAI
+## Yet, another solution for PDF data extraction: using OpenAI ChatGPT API
 One solution to extract information from PDF files is to use OpenAI's natural language processing capabilities to understand the content of the document. However, OpenAI is not able to work with PDF or image formats directly, so the first step is to convert the PDF to text while retaining the relative positions of the text items.
 
 One way to achieve this is to use the PDFLayoutTextStripper library, which uses PDFBox to read through all text items in the PDF file and organize them in lines, keeping the relative positions the same as in the original PDF file. This is important because, for example, in an invoice's items table, if the amount is in the same column as the quantity, it will result in incorrect values when querying for the total amount and total quantity. Here is an example of the output from the stripper:

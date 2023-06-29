@@ -3,13 +3,12 @@ package io.thoqbk.openaipdf;
 import com.google.gson.Gson;
 import io.github.jonathanlink.PDFLayoutTextStripper;
 import org.apache.commons.io.IOUtils;
-import org.apache.pdfbox.io.RandomAccessFile;
+import org.apache.pdfbox.io.RandomAccessBuffer;
 import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
 import java.io.DataOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -40,8 +39,8 @@ public class Main {
 
     private static String extractPDFContent() throws IOException {
         ClassLoader classLoader = Main.class.getClassLoader();
-        File file = new File(classLoader.getResource(SAMPLE_PDF_FILE).getFile());
-        PDFParser pdfParser = new PDFParser(new RandomAccessFile(file, "r"));
+        InputStream stream = classLoader.getResourceAsStream(SAMPLE_PDF_FILE);
+        PDFParser pdfParser = new PDFParser(new RandomAccessBuffer(stream));
         pdfParser.parse();
         PDDocument pdDocument = new PDDocument(pdfParser.getDocument());
         PDFTextStripper pdfTextStripper = new PDFLayoutTextStripper();

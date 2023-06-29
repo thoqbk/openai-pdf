@@ -119,3 +119,6 @@ java -jar target/openai-pdf-1.0-SNAPSHOT-jar-with-dependencies.jar
 More development-friendly ways include:
 - Using `VS Code` with the Java plugin.
 - Using `IntelliJ`.
+
+## Solution for large PDF files
+[pdf-query](https://github.com/thoqbk/pdf-query)

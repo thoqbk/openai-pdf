@@ -109,5 +109,13 @@ Steps:
 - Create an OpenAI account
 - Log in and generate an API key
 - Replace `OPENAI_API_KEY` in Main.java with your key
-- Update `SAMPLE_PDF_FILE` if needed
-- Execute the code and view the results from the output
+- (Optional) Update `SAMPLE_PDF_FILE` if needed
+- Open the terminal, move to the root directory and run the following commands
+```
+mvn install
+java -jar target/openai-pdf-1.0-SNAPSHOT-jar-with-dependencies.jar
+```
+
+More development-friendly ways include:
+- Using `VS Code` with the Java plugin.
+- Using `IntelliJ`.

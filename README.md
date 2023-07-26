@@ -5,7 +5,7 @@ PDF, or Portable Document Format, is a popular file format that is widely used f
 
 One reason why it is difficult to extract information from PDFs is that the format is not structured. Unlike HTML, which has a specific format for tables and headers that developers can easily identify, PDFs do not have a consistent layout for information. This makes it harder for developers to know where to find the specific information they need.
 
-Another reason why it is difficult to extract information from PDFs is that there is no standard layout for information. Each system generates invoices and purchase orders differently, so developers must often write custom code to extract information from each individual document. This can be a time-consuming and error-prone process.
+Another reason is that there is no standard layout for information. Each system generates invoices and purchase orders differently, so developers must often write custom code to extract information from each individual document. This can be a time-consuming and error-prone process.
 
 Additionally, PDFs can contain both text and images, making it difficult for developers to programmatically extract information from the document. OCR (optical character recognition) can be used to extract text from images, but this adds complexity to the process and may result in errors if the OCR software is not accurate.
 
